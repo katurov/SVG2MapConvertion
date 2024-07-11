@@ -36,3 +36,26 @@ Good practice: take two point from different corners of the picture (e.g. left-u
 Use this post to [**convert paths to polygon**](https://alpha.inkscape.org/vectors/www.inkscapeforum.com/viewtopic8ac5.html?t=9597), paths are not the same as polygons for the maps. 
 
 **You can edit curves** right on Google Map (in "My maps" application) or use QGIS for that (if you are brave enough).
+
+**You can combine polygons from SVG** to multypolygon in python like this:
+```python
+import pandas
+import geopandas 
+import shapely
+
+from shapely.geometry import Polygon
+from shapely.ops import cascaded_union
+
+serbia_regions = geopandas.read_file("Wine_regions_of_Serbia_from_SVG.gpkg")
+
+Data = [
+    ('West Morava', '', cascaded_union([serbia_regions.loc[2,"geometry"], serbia_regions.loc[3,"geometry"]])),
+    ('Banat', '', cascaded_union([serbia_regions.loc[7,"geometry"], serbia_regions.loc[8,"geometry"], serbia_regions.loc[9,"geometry"]])),
+    ('Subotica-Horgoš', '', cascaded_union([serbia_regions.loc[10,"geometry"], serbia_regions.loc[11,"geometry"], serbia_regions.loc[12,"geometry"]]))
+]
+
+data_df = pandas.DataFrame.from_records(Data, columns=["Title", "Description","geometry"])
+geo_df  = geopandas.GeoDataFrame(data_df, geometry='geometry', crs='epsg:4326')
+
+geo_df.to_file("Wine_regions_of_Serbia_multypoligons.gpkg", driver='GPKG')
+```
