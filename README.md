@@ -3,7 +3,7 @@ A hobby project to make Serbian wine Map from different sources
 
 ## A converter
 
-I've used [MyGeodata Converter](https://mygeodata.cloud/converter/) (Online GIS / CAD Data Conversion and Transformation Tool) which can consume SVG tags `<polygon />` and `<path />` and convert into KML (for Google Maps) or GPKG (sor QGIS or geopandas) and offers a useful preview. Sometimes it shows an error of conversion, I found two common reasons (ourside the XML-error):
+I've used [MyGeodata Converter](https://mygeodata.cloud/converter/) (Online GIS / CAD Data Conversion and Transformation Tool) which can consume SVG tags `<polygon />` and `<path />` and convert into KML (for Google Maps) or GPKG (sor QGIS or geopandas) and offers a useful preview. Sometimes it shows an [error of conversion](https://gis.stackexchange.com/questions/388638/converting-svg-files-to-geojson/483476#483476), I found two common reasons (ourside the XML-error):
 * excess code (like `<style />` block)
 * file too big
 
