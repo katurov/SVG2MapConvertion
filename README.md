@@ -28,3 +28,11 @@ This section have to be child of `<svg>` tag (on a first level):
 ```
 
 Good practice: take two point from different corners of the picture (e.g. left-up and right-down).
+
+## Solutions
+
+**The best tool to edit SVG** is [Incscape](https://inkscape.org) - it is free and usefull. You can **find X/Y points** of the key point of the picture in it. Alse you can use its easy interface to select unneeded object to delete before conversion (it can help make file smaller). 
+
+Use this post to [**convert paths to polygon**](https://alpha.inkscape.org/vectors/www.inkscapeforum.com/viewtopic8ac5.html?t=9597), paths are not the same as polygons for the maps. 
+
+**You can edit curves** right on Google Map (in "My maps" application) or use QGIS for that (if you are brave enough).
